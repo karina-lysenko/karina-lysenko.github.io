@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio.Interior</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">KL.</div>
+  <nav class="nav">
+      <a href="index.html">HOME</a>
+      <a href="interior.html">INTERIOR</a>
+      <a href="exterior.html" class="active">EXTERIOR</a>
+      <a href="people.html">PEOPLE</a>
+  </nav>
+</header>
+
+<main class="gallery-section">
+  <div class="gallery">
+      <img src="photos/exterior/1.jpg" alt="1">
+      <img src="photos/exterior/2.jpg" alt="2">
+      <img src="photos/exterior/3.jpeg" alt="3">
+      <img src="photos/exterior/4.jpeg" alt="4">
+      <img src="photos/exterior/5.jpg" alt="5">
+      <img src="photos/exterior/6.jpg" alt="6">
+      <img src="photos/exterior/7.jpg" alt="7">
+      <img src="photos/exterior/8.jpg" alt="8">
+      <img src="photos/exterior/9.jpg" alt="9">
+      <img src="photos/exterior/10.jpg" alt="10">
+      <img src="photos/exterior/11.jpeg" alt="11">
+      <img src="photos/exterior/11-1.jpeg" alt="11-1">
+      <img src="photos/exterior/12.jpeg" alt="12">
+      <img src="photos/exterior/13.jpeg" alt="13">
+      <img src="photos/exterior/14.jpeg" alt="14">
+  </div>
+</main>
+
+<footer>
+  <div class="block-contacts">
+      <a href="https://www.instagram.com/karinlysenko_?igsh=bWp1ZjE1MmJsMTJj">
+          <img src="photos/contact/instagram-svgrepo-com.svg" alt="Instagram">
+      </a>
+      <a href="https://www.linkedin.com/in/karina-lysenko-ba37b42a1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">
+          <img src="photos/contact/linkedin_SVG.svg" alt="LinkedIn">
+      </a>
+      <a href="mailto:ande.green@yandex.ru">
+          <img src="photos/contact/mail_svg.svg" alt="Email">
+      </a>
+      <a href="tg://resolve?domain=ande_green">
+          <img src="photos/contact/telegram_svg.svg" alt="Telegram">
+      </a>
+      <span>+375 29 850 15 14</span>
+  </div>
+</footer>
+
+<!-- Лайтбокс -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img">
+  <a class="prev">&#10094;</a>
+  <a class="next">&#10095;</a>
+</div>
+
+<script>
+  const images = document.querySelectorAll('.gallery img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const close = document.querySelector('.close');
+  const prev = document.querySelector('.prev');
+  const next = document.querySelector('.next');
+
+  let currentIndex = 0;
+
+  function showImage(index) {
+    if (index < 0) index = images.length - 1;
+    if (index >= images.length) index = 0;
+    currentIndex = index;
+    lightboxImg.src = images[index].src;
+    lightbox.style.display = 'flex';
+  }
+
+  images.forEach((img, index) => {
+    img.addEventListener('click', () => showImage(index));
+  });
+
+  close.addEventListener('click', () => lightbox.style.display = 'none');
+  prev.addEventListener('click', () => showImage(currentIndex - 1));
+  next.addEventListener('click', () => showImage(currentIndex + 1));
+
+  // Закрытие по клику на фон
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) lightbox.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>

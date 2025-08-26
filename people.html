@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio.Interior</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">KL.</div>
+  <nav class="nav">
+      <a href="index.html">HOME</a>
+      <a href="interior.html">INTERIOR</a>
+      <a href="exterior.html">EXTERIOR</a>
+      <a href="people.html" class="active">PEOPLE</a>
+  </nav>
+</header>
+
+<main class="gallery-section">
+  <div class="gallery">
+    <img src="photos/people/1.jpg" alt="1">
+    <img src="photos/people/2.jpg" alt="2">
+    <img src="photos/people/3.jpg" alt="3">
+    <img src="photos/people/4.jpg" alt="4">
+    <img src="photos/people/5.jpg" alt="5">
+    <img src="photos/people/6.jpg" alt="6">
+    <img src="photos/people/7.jpg" alt="7">
+    <img src="photos/people/8.jpg" alt="8">
+    <img src="photos/people/9.jpg" alt="9">
+    <img src="photos/people/10.jpg" alt="10">
+    <img src="photos/people/11.jpg" alt="11">
+    <img src="photos/people/12.jpg" alt="12">
+    <img src="photos/people/12-1.jpg" alt="12-1">
+    <img src="photos/people/13.jpg" alt="13">
+    <img src="photos/people/14.jpg" alt="14">
+    <img src="photos/people/15.jpg" alt="15">
+    <img src="photos/people/16.jpg" alt="16">
+    <img src="photos/people/17.jpg" alt="17">
+    <img src="photos/people/18.jpg" alt="18">
+    <img src="photos/people/19.jpg" alt="19">
+    <img src="photos/people/20.jpg" alt="20">
+    <img src="photos/people/21.jpg" alt="21">
+    <img src="photos/people/22.jpg" alt="22">
+    <img src="photos/people/23.jpg" alt="23">
+    <img src="photos/people/24.jpg" alt="24">
+    <img src="photos/people/25.jpg" alt="25">
+    <img src="photos/people/26.jpg" alt="26">
+    <img src="photos/people/27.jpg" alt="27">
+    <img src="photos/people/28.jpg" alt="28">
+    <img src="photos/people/29.jpg" alt="29">
+    <img src="photos/people/30.jpg" alt="30">
+    <img src="photos/people/31.jpg" alt="31">
+    <img src="photos/people/32.jpg" alt="32">
+    <img src="photos/people/33.jpg" alt="33">
+    <img src="photos/people/34.jpg" alt="34">
+    <img src="photos/people/35.jpg" alt="35">
+    <img src="photos/people/36.jpg" alt="36">
+    <img src="photos/people/37.jpg" alt="37">
+    <img src="photos/people/38.jpg" alt="38">
+  </div>
+</main>
+
+<footer>
+  <div class="block-contacts">
+      <a href="https://www.instagram.com/karinlysenko_?igsh=bWp1ZjE1MmJsMTJj">
+          <img src="photos/contact/instagram-svgrepo-com.svg" alt="Instagram">
+      </a>
+      <a href="https://www.linkedin.com/in/karina-lysenko-ba37b42a1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">
+          <img src="photos/contact/linkedin_SVG.svg" alt="LinkedIn">
+      </a>
+      <a href="mailto:ande.green@yandex.ru">
+          <img src="photos/contact/mail_svg.svg" alt="Email">
+      </a>
+      <a href="tg://resolve?domain=ande_green">
+          <img src="photos/contact/telegram_svg.svg" alt="Telegram">
+      </a>
+      <span>+375 29 850 15 14</span>
+  </div>
+</footer>
+
+<!-- Лайтбокс -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img">
+  <a class="prev">&#10094;</a>
+  <a class="next">&#10095;</a>
+</div>
+
+<script>
+  const images = document.querySelectorAll('.gallery img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const close = document.querySelector('.close');
+  const prev = document.querySelector('.prev');
+  const next = document.querySelector('.next');
+
+  let currentIndex = 0;
+
+  function showImage(index) {
+    if (index < 0) index = images.length - 1;
+    if (index >= images.length) index = 0;
+    currentIndex = index;
+    lightboxImg.src = images[index].src;
+    lightbox.style.display = 'flex';
+  }
+
+  images.forEach((img, index) => {
+    img.addEventListener('click', () => showImage(index));
+  });
+
+  close.addEventListener('click', () => lightbox.style.display = 'none');
+  prev.addEventListener('click', () => showImage(currentIndex - 1));
+  next.addEventListener('click', () => showImage(currentIndex + 1));
+
+  // Закрытие по клику на фон
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) lightbox.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
